@@ -1,0 +1,63 @@
+pipeline {
+    agent any
+
+
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Clean') {
+            steps {
+                sh 'rm -rf target/*'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+
+       stage('Mockito') {
+             steps {
+                 sh 'mvn test'
+             }
+         }
+
+
+
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+    post {
+        success {
+            echo 'Build successful! Deploying...'
+
+        }
+        failure {
+            echo 'Build failed! Sending notification...'
+
+        }
+    }
+}
