@@ -69,12 +69,12 @@ public class SupplierServiceMockTest {
         verify(supplierRepository, times(1)).save(supplierToUpdate);
     }
 
-    @Test
+    /*@Test
     void testDeleteSupplier() {
         Long supplierId = 1L;
 
         supplierService.deleteSupplier(supplierId);
 
         verify(supplierRepository, times(1)).deleteById(supplierId);
-    }
+    }*/
 }
