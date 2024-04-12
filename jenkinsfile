@@ -31,14 +31,11 @@ pipeline {
           }
        }
 
-    stage("MVN SONARQUBE") {
-    steps {
-        withSonarQubeEnv(installationName: 'sonar') {
-            sh "mvn -DskipTests sonar:sonar \
-                -Dsonar.projectKey=4TWIN1-G1-Achat \
-                -Dsonar.branch.name=eyamechergui-4TWIN1-G1"
+       stage('SonarQube Analysis') {
+        def mvn = tool 'Default Maven';
+        withSonarQubeEnv() {
+          sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=4TWIN1-G1-Achat -Dsonar.projectName='4TWIN1-G1-Achat'"
         }
-      }
     }
 
     }
