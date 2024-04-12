@@ -30,5 +30,14 @@ pipeline {
              sh 'mvn package'
           }
        }
+
+       stage("MVN SONARQUBE") {
+           steps {
+             withSonarQubeEnv(installationName: 'sonar') {
+             sh "mvn -DskipTests sonar:sonar"}
+           }
+       }
+
+
     }
 }
