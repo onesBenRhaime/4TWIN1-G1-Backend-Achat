@@ -7,13 +7,7 @@ pipeline {
                 checkout scm
             }
         }
-       stage('Status MySQL') {
-            steps {
-                script {
-                   sh 'sudo docker run -d --name 3d75c95422f5  -p 3306:3306 -e MYSQL_ROOT_PASSWORD= mysql:latest'
-                }
-            }
-       }
+
         stage('Maven Clean Compile') {
                   steps {
                       sh 'mvn clean'
