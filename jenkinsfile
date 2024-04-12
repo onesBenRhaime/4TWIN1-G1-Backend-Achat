@@ -31,13 +31,12 @@ pipeline {
                 sh 'mvn install'
             }
        }
-       stage("SonarQube Analysis") {
-            steps {
-              withSonarQubeEnv('SonarQubeBenRhaime') {
-                   sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=123'
-                   }
-            }
-       }
+       stage('SonarQube Analysis') {
+           def mvn = tool 'Default Maven';
+           withSonarQubeEnv() {
+             sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=4TWIN1-G1-Stock -Dsonar.projectName='4TWIN1-G1-Stock'"
+           }
+         }
 
     }
 }
