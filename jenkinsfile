@@ -11,10 +11,10 @@ pipeline {
         NEXUS_REPOSITORY = "AhmedRepo"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
-       /* ARTIFACT_PATH = "com/example/FoyerRouamnissi/0.0.1-SNAPSHOT/FoyerRouamnissi-0.0.1-20240411.203933-3.jar"
-        DOCKER_IMAGE_NAME = "soniachalouah/spring"
+        ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.160014-1.jar"
+        DOCKER_IMAGE_NAME = "jemaiahmed/spring"
         DOCKER_HUB_CREDENTIALS = 'docker'
-        DOCKER_COMPOSE_VERSION = "1.29.2"*/
+        DOCKER_COMPOSE_VERSION = "1.29.2"
     }
 
     stages {
@@ -56,7 +56,7 @@ pipeline {
             }
         }
 
-        stage("UploadArtifact") {
+        /*stage("UploadArtifact") {
             steps {
                 nexusArtifactUploader(
                     nexusVersion: 'nexus3',
@@ -76,9 +76,9 @@ pipeline {
                     ]
                 )
             }
-        }
+        }*/
 
-       /*  stage('Build Docker Image') {
+         stage('Build Docker Image') {
             steps {
                 script {
                     // Build the Docker image using the Dockerfile
@@ -105,10 +105,10 @@ pipeline {
             steps {
                 script {
                     // Perform Docker login
-                    sh 'docker login -u soniachalouah -p sonia1234'
+                    sh 'docker login -u jemaiahmed -p 1919191919'
 
                     // Pull the Docker image
-                    sh 'docker pull soniachalouah/spring'
+                    sh 'docker pull jemaiahmed/spring'
 
                     // Run Docker Compose
                     sh 'docker compose up -d'
@@ -116,7 +116,7 @@ pipeline {
             }
         }
 
-        stage('Prometheus Setup') {
+      /*  stage('Prometheus Setup') {
             steps {
                 sh 'docker compose up -d prometheus'
             }
