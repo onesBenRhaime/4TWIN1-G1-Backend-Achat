@@ -46,9 +46,6 @@ public class ProductServiceMockTest {
         verify(productRepository, times(1)).save(productToAdd);
     }
 
-    // Test des autres méthodes similaires (retrieveProduct, updateProduct, deleteProduct)...
-
-    // Exemple de test pour la méthode retrieveProduct
     @Test
     void testRetrieveProduct() {
         Long productId = 1L;
@@ -66,6 +63,4 @@ public class ProductServiceMockTest {
         assertEquals(product, retrievedProduct);
         verify(productRepository, times(1)).findById(productId);
     }
-
-    // Tests pour les autres méthodes (retrieveAllProduct, retrieveProductByCategory, deleteProduct)...
 }
