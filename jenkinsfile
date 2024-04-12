@@ -7,17 +7,12 @@ pipeline {
                 checkout scm
             }
         }
-
-        stage('Clean') {
-            steps {
-                sh 'rm -rf target/*'
-            }
-        }
-
-        stage('MAVEN BUILD') {
-            steps {
-                sh 'mvn clean compile'
-            }
+        stage('Maven Clean Compile') {
+                  steps {
+                      sh 'mvn clean'
+                      echo 'Running Maven Compile'
+                      sh 'mvn compile'
+                  }
         }
 
        stage('Tests - JUnit/Mockito') {
@@ -26,10 +21,6 @@ pipeline {
              }
        }
 
-       stage('Package') {
-              steps {
-                  sh 'mvn package'
-              }
-       }
+
     }
 }
