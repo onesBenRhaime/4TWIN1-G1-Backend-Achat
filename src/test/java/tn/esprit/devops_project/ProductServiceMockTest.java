@@ -37,7 +37,7 @@ public class ProductServiceMockTest {
         when(productRepository.save(productToAdd)).thenReturn(productToAdd);
 
         // Appeler la méthode du service pour ajouter un produit
-        Product savedProduct = productService.addProduct(productToAdd, 2L);
+        Product savedProduct = productService.addProduct(productToAdd, 1L);
 
         // Vérifier si le produit ajouté est renvoyé par le service
         assertEquals(productToAdd, savedProduct);
