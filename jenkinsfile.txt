@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Clean') {
+            steps {
+                sh 'rm -rf target/*'
+            }
+        }
+
+        stage('MAVEN BUILD') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+
+       stage('MOCKITO') {
+             steps {
+                 sh 'mvn test'
+             }
+       }
+    }
+}
