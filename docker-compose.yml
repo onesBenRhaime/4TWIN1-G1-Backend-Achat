@@ -6,7 +6,7 @@ services:
       - "8050:8050"
     environment:
       - NEXUS_URL=http://192.168.43.238:8081/
-      - NEXUS_REPOSITORY=EtudiantSoniachalouah
+      - NEXUS_REPOSITORY=AhmedRepo
       - NEXUS_USERNAME=admin
       - NEXUS_PASSWORD=nexus
       - ARTIFACT_PATH=com/example/FoyerRouamnissi/0.0.1-SNAPSHOT/FoyerRouamnissi-0.0.1-20240411.203933-3.jar
