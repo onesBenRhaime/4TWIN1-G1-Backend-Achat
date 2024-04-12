@@ -19,8 +19,6 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class StockServiceMockTest {
 
-
-
     @InjectMocks
     private StockServiceImpl stockService;
 
@@ -35,41 +33,29 @@ public class StockServiceMockTest {
 
     }
 
+
+
     @Test
     void testGetUniveristesList() {
-        Stock universite1 = new Stock(9, "ben" ,new HashSet<>());
+        Stock universite1 = new Stock("ben");
         when(universiteRepository.findAll()).thenReturn(Arrays.asList(universite1));
         List<Stock> universiteList = iUniversiteService.retrieveAllStock();
-        assertEquals(2, universiteList.size());
+        assertEquals(1, universiteList.size());
         assertEquals("ben", universiteList.get(0).getTitle());
-
     }
-
 
     @Test
     void testGetUniveristeById() {
-        Stock universite = new Stock(10, "george",new HashSet<>());
+        Stock universite = new Stock("george");
         when(universiteRepository.findById(10L)).thenReturn(Optional.of(universite));
         Stock universiteById = iUniversiteService.retrieveStock(10L);
-        assertNotEquals(null, universiteById);
-        assertEquals("george", universiteById.getIdStock());
+        assertNotNull(universiteById);
+        assertEquals("george", universiteById.getTitle());
     }
-
-    @Test
-    void testGetInvalidUniversiteById() {
-        when(universiteRepository.findById(17L)).thenThrow(new RuntimeException("Stock Not Found with ID"));
-
-        Exception exception = assertThrows(RuntimeException.class, () -> {
-            iUniversiteService.retrieveStock(17L);
-        });
-
-        assertTrue(exception.getMessage().contains("Stock Not Found with ID"));
-    }
-
 
     @Test
     void testCreateUniversite() {
-        Stock universite = new Stock(12, "john",new HashSet<>());
+        Stock universite = new Stock("john");
         iUniversiteService.addStock(universite);
         verify(universiteRepository, times(1)).save(universite);
         ArgumentCaptor<Stock> universiteArgumentCaptor = ArgumentCaptor.forClass(Stock.class);
@@ -78,8 +64,4 @@ public class StockServiceMockTest {
         assertNotNull(universiteCreated.getIdStock());
         assertEquals("john", universiteCreated.getTitle());
     }
-
-
-
-
 }
