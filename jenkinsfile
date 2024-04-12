@@ -8,39 +8,39 @@ pipeline {
             }
         }
 
-        stage('Clean') {
-            steps {
-                sh 'rm -rf target/*'
-            }
+        stage('Maven Clean Compile') {
+                  steps {
+                      sh 'mvn clean'
+                      echo 'Running Maven Compile'
+                      sh 'mvn compile'
+                  }
         }
 
-        stage('MAVEN BUILD') {
-            steps {
-                sh 'mvn clean compile'
-            }
-        }
-
-       stage('MOCKITO') {
+       stage('Tests - JUnit/Mockito') {
              steps {
                  sh 'mvn test'
              }
        }
-       stage('PACKAGE') {
-          steps {
-             sh 'mvn package'
-          }
+       stage('Build package') {
+            steps {
+                sh 'mvn package'
+            }
        }
-
-        stage('SonarQube Analysis') {
+       stage('Maven Install') {
+            steps {
+                sh 'mvn install'
+            }
+       }
+       stage('SonarQube Analysis') {
              steps {
-                 script {
-                     def scannerHome = tool 'SonarQubeBenRhaime'
+                script {
+                  def scannerHome = tool 'scanner'
                      withSonarQubeEnv {
                          sh "${scannerHome}/bin/sonar-scanner"
                      }
-                 }
+                  }
+                }
              }
-         }
-
+       }
     }
 }
