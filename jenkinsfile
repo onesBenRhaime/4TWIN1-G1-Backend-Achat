@@ -63,7 +63,7 @@ pipeline {
                     protocol: 'http',
                     nexusUrl: "${NEXUS_URL}",
                     groupId: 'tn.esprit',
-                    version: "1.0",
+                    version: "1.0-SNAPSHOT",
                     repository: 'AhmedRepo',
                     credentialsId: 'nexus',
                     artifacts: [
