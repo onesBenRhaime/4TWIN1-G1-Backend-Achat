@@ -52,26 +52,6 @@ public class StockServiceMockTest {
         verify(stockRepository, times(1)).findById(stockId);
     }
 
-    /*@Test
-    void testUpdateStock() {
-        Stock stockToUpdate = new Stock();
-        stockToUpdate.setIdStock(1L);
-        stockToUpdate.setTitle("Stock 1");
 
-        when(stockRepository.save(stockToUpdate)).thenReturn(stockToUpdate);
 
-        Stock updatedStock = stockService.updateStock(stockToUpdate);
-
-        assertEquals(stockToUpdate, updatedStock);
-        verify(stockRepository, times(1)).save(stockToUpdate);
-    }*/
-
-    /*@Test
-    void testDeleteStock() {
-        Long stockId = 1L;
-
-        stockService.deleteStock(stockId);
-
-        verify(stockRepository, times(1)).deleteById(stockId);
-    }*/
 }
