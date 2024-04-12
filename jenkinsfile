@@ -34,8 +34,8 @@ pipeline {
        stage("SonarQube Analysis") {
             steps {
               withSonarQubeEnv('SonarQubeBenRhaime') {
-                   sh 'mvn sonar:sonar'
-              }
+                   sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=123'
+                   }
             }
        }
 
