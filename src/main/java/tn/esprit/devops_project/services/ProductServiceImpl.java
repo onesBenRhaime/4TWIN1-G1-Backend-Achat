@@ -14,13 +14,20 @@ import tn.esprit.devops_project.repositories.StockRepository;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+
 @Slf4j
 public class ProductServiceImpl implements IProductService {
 
+    @Autowired
     private ProductRepository productRepository;
+    @Autowired
     private StockRepository stockRepository;
 
+    @Autowired
+    public ProductServiceImpl(ProductRepository productRepository, StockRepository stockRepository) {
+        this.productRepository = productRepository;
+        this.stockRepository = stockRepository;
+    }
     @Override
     public Product addProduct(Product product, Long idStock) {
         Stock stock = stockRepository.findById(idStock).orElseThrow(() -> new NullPointerException("stock not found"));

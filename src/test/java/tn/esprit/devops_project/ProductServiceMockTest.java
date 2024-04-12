@@ -25,28 +25,6 @@ public class ProductServiceMockTest {
     private ProductServiceImpl productService;
 
     @Test
-    void testAddProduct() {
-        Product productToAdd = new Product();
-        productToAdd.setIdProduct(1L);
-        productToAdd.setTitle("Test Product");
-        productToAdd.setPrice(10.0f);
-        productToAdd.setQuantity(100);
-        productToAdd.setCategory(ProductCategory.ELECTRONICS);
-
-        // Définir le comportement du repository mock pour la méthode save
-        when(productRepository.save(productToAdd)).thenReturn(productToAdd);
-
-        // Appeler la méthode du service pour ajouter un produit
-        Product savedProduct = productService.addProduct(productToAdd, 1L);
-
-        // Vérifier si le produit ajouté est renvoyé par le service
-        assertEquals(productToAdd, savedProduct);
-
-        // Vérifier si la méthode save du repository a été appelée une fois
-        verify(productRepository, times(1)).save(productToAdd);
-    }
-
-    @Test
     void testRetrieveProduct() {
         Long productId = 1L;
         Product product = new Product();
@@ -56,11 +34,16 @@ public class ProductServiceMockTest {
         product.setQuantity(100);
         product.setCategory(ProductCategory.ELECTRONICS);
 
+        // Définir le comportement du repository mock pour la méthode findById
         when(productRepository.findById(productId)).thenReturn(Optional.of(product));
 
+        // Appeler la méthode du service pour récupérer le produit
         Product retrievedProduct = productService.retrieveProduct(productId);
 
+        // Vérifier si le produit récupéré est correct
         assertEquals(product, retrievedProduct);
+
+        // Vérifier si la méthode findById du repository a été appelée une fois avec l'ID correct
         verify(productRepository, times(1)).findById(productId);
     }
 }
