@@ -1,15 +1,15 @@
 version: '3.8'
 services:
   spring:
-    image: soniachalouah/spring
+    image: eyamechergui/spring
     ports:
       - "8050:8050"
     environment:
-      - NEXUS_URL=http://192.168.43.238:8081/
-      - NEXUS_REPOSITORY=EtudiantSoniachalouah
+      - NEXUS_URL=http://192.168.33.10:8081/
+      - NEXUS_REPOSITORY=4TWIN1-G1-Achat
       - NEXUS_USERNAME=admin
       - NEXUS_PASSWORD=nexus
-      - ARTIFACT_PATH=com/example/FoyerRouamnissi/0.0.1-SNAPSHOT/FoyerRouamnissi-0.0.1-20240410.230505-2.jar
+      - ARTIFACT_PATH=tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.230309-1.jar
       - SPRING_DATASOURCE_URL=jdbc:mysql://dbmysql:3306/brogramDB?createDatabaseIfNotExist=true&userSSL=false
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root

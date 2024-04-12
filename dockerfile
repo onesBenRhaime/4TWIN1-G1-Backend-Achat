@@ -8,9 +8,8 @@ WORKDIR /app
 RUN apk --no-cache add curl
 
 # Download the Spring Boot application JAR file from Nexus
-RUN curl -u admin:nexus "http://192.168.43.238:8081/repository/EtudiantSoniachalouah/com/example/FoyerRouamnissi/0.0.1-SNAPSHOT/FoyerRouamnissi-0.0.1-20240410.230505-2.jar" --output /app/FoyerRouamnissi-0.0.1-20240410.230505-2.jar
-# Expose the port that the Spring Boot application will run on
+RUN curl -u admin:nexus "http://192.168.33.10:8081/repository/4TWIN1-G1-Achat/tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.230309-1.jar" --output /app/DevOps_Project-1.0-20240412.230309-1.jar
 EXPOSE 8050
 
 # Specify the command to run the Spring Boot application when the container starts
-ENTRYPOINT ["java", "-jar", "FoyerRouamnissi-0.0.1-20240410.230505-2.jar"]
+ENTRYPOINT ["java", "-jar", "DevOps_Project-1.0-20240412.230309-1.jar"]
