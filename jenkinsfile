@@ -37,7 +37,5 @@ pipeline {
              sh "mvn -DskipTests sonar:sonar"}
            }
        }
-
-
     }
 }
