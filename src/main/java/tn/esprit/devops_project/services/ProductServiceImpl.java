@@ -2,6 +2,7 @@ package tn.esprit.devops_project.services;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.devops_project.services.Iservices.IProductService;
 import tn.esprit.devops_project.entities.Product;
@@ -13,12 +14,18 @@ import tn.esprit.devops_project.repositories.StockRepository;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+
 @Slf4j
 public class ProductServiceImpl implements IProductService {
 
-   public ProductRepository productRepository;
-   public StockRepository stockRepository;
+    private final ProductRepository productRepository;
+    private final StockRepository stockRepository;
+
+    @Autowired
+    public ProductServiceImpl(ProductRepository productRepository, StockRepository stockRepository) {
+        this.productRepository = productRepository;
+        this.stockRepository = stockRepository;
+    }
 
     @Override
     public Product addProduct(Product product, Long idStock) {
