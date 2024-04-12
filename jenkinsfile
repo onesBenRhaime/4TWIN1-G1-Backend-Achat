@@ -10,10 +10,10 @@ pipeline {
         NEXUS_REPOSITORY = "4TWIN1-G1-Achat"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
-       /*ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.192514-2.jar"
-        DOCKER_IMAGE_NAME = "jemaiahmed/spring"
+       ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.224854-1.jar"
+        DOCKER_IMAGE_NAME = "onesbenrhaime/OnesbenRhaime-4TWIN1-G1-Achat"
         DOCKER_HUB_CREDENTIALS = 'docker'
-        DOCKER_COMPOSE_VERSION = "1.29.2"*/
+        DOCKER_COMPOSE_VERSION = "1.29.2"
     }
     stages {
         stage('Checkout') {
@@ -58,7 +58,7 @@ pipeline {
        }
     */
 
-        stage("UploadArtifact") {
+      /*  stage("UploadArtifact") {
             steps {
                 nexusArtifactUploader(
                     nexusVersion: 'nexus3',
@@ -78,6 +78,56 @@ pipeline {
                         ]
                     )
             }
-       }
+       }*/
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image using the Dockerfile
+                    docker.build("${DOCKER_IMAGE_NAME}", "--build-arg NEXUS_URL=${NEXUS_URL} \
+                        --build-arg NEXUS_REPOSITORY=${NEXUS_REPOSITORY} \
+                        --build-arg NEXUS_USERNAME=${NEXUS_USERNAME} \
+                        --build-arg NEXUS_PASSWORD=${NEXUS_PASSWORD} \
+                        --build-arg ARTIFACT_PATH=${ARTIFACT_PATH} .")
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
+                        docker.image("${DOCKER_IMAGE_NAME}").push()
+                    }
+                }
+            }
+        }
+
+        stage('Run Docker Compose') {
+            steps {
+                script {
+                    // Perform Docker login
+                    sh 'docker login -u onesbenrhaime -p 223AFT2892'
+
+                    // Pull the Docker image
+                    sh 'docker pull onesbenrhaime/OnesbenRhaime-4TWIN1-G1-Achat'
+
+                    // Run Docker Compose
+                    sh 'docker compose up -d'
+                }
+            }
+        }
+
+        stage('Prometheus Setup') {
+            steps {
+                sh 'docker compose up -d prometheus'
+            }
+        }
+
+        stage('Grafana Setup') {
+            steps {
+                sh 'docker compose up -d grafana'
+            }
+        }
+
     }
 }
