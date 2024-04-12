@@ -14,18 +14,12 @@ import tn.esprit.devops_project.repositories.StockRepository;
 import java.util.List;
 
 @Service
-
+@AllArgsConstructor
 @Slf4j
 public class ProductServiceImpl implements IProductService {
 
-    private final ProductRepository productRepository;
-    private final StockRepository stockRepository;
-
-    @Autowired
-    public ProductServiceImpl(ProductRepository productRepository, StockRepository stockRepository) {
-        this.productRepository = productRepository;
-        this.stockRepository = stockRepository;
-    }
+    private ProductRepository productRepository;
+    private StockRepository stockRepository;
 
     @Override
     public Product addProduct(Product product, Long idStock) {
