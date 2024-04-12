@@ -3,12 +3,12 @@ pipeline {
 
     environment {
         SNAP_REPO = 'DevOps_Project-1.0'
-        RELEASE_REPO = 'EtudiantSoniachalouah'
+        RELEASE_REPO = 'ahmedrepo'
         NEXUS_IP = "192.168.33.10"
         NEXUS_PORT = "8081"
         NEXUS_LOGIN = "nexus"
         NEXUS_URL = "192.168.33.10:8081" // Correction de l'URL Nexus
-        NEXUS_REPOSITORY = "EtudiantSoniachalouah"
+        NEXUS_REPOSITORY = "ahmedrepo"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
        /* ARTIFACT_PATH = "com/example/FoyerRouamnissi/0.0.1-SNAPSHOT/FoyerRouamnissi-0.0.1-20240411.203933-3.jar"
@@ -113,7 +113,7 @@ pipeline {
                     // Run Docker Compose
                     sh 'docker compose up -d'
                 }
-            }*/
+            }
         }
 
         stage('Prometheus Setup') {
