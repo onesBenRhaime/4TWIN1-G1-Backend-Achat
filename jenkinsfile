@@ -2,12 +2,12 @@ pipeline {
     agent any
     environment {
             SNAP_REPO = 'DevOps_Project-1.0'
-            RELEASE_REPO = 'eya'
+            RELEASE_REPO = '4TWIN1-G1-Achat'
             NEXUS_IP = "192.168.33.10"
             NEXUS_PORT = "8081"
             NEXUS_LOGIN = "nexus"
             NEXUS_URL = "192.168.33.10:8081" // Correction de l'URL Nexus
-            NEXUS_REPOSITORY = "eya"
+            NEXUS_REPOSITORY = "4TWIN1-G1-Achat"
             NEXUS_USERNAME = "admin"
             NEXUS_PASSWORD = "nexus"
             /* ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.192514-2.jar"
@@ -64,7 +64,7 @@ pipeline {
                            nexusUrl: "${NEXUS_URL}",
                            groupId: 'tn.esprit',
                            version: "1.0-SNAPSHOT",
-                           repository: 'eya',
+                           repository: '4TWIN1-G1-Achat',
                            credentialsId: 'nexus',
                            artifacts: [
                                [
