@@ -129,5 +129,15 @@ pipeline {
             }
         }
 
+    } 
+    post {
+        success {
+            echo 'Build successful! Deploying...'
+
+        }
+        failure {
+            echo 'Build failed! Sending notification...'
+
+        }
     }
 }
