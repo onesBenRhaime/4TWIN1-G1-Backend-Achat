@@ -1,18 +1,18 @@
 version: '3.8'
 services:
   spring:
-    image: OnesBenRhaime-4TWIN1-G1-Achat/spring
+    image: onesbenrhaime/OnesBenRhaime-4TWIN1-G1-Achat
     ports:
       - "8050:8050"
     environment:
       - NEXUS_URL=http://192.168.33.10:8081/
-      - NEXUS_REPOSITORY=AhmedRepo
+      - NEXUS_REPOSITORY=4TWIN1-G1-Achat
       - NEXUS_USERNAME=admin
       - NEXUS_PASSWORD=nexus
-      - ARTIFACT_PATH=tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.192514-2.jar
+      - ARTIFACT_PATH=tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.224854-1.jar
       - SPRING_DATASOURCE_URL=jdbc:mysql://dbmysql:3306/programDB?createDatabaseIfNotExist=true&userSSL=false
       - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=
+      - SPRING_DATASOURCE_PASSWORD=root
     depends_on:
       - dbmysql
 

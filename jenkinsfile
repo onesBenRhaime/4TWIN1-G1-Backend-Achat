@@ -10,7 +10,7 @@ pipeline {
         NEXUS_REPOSITORY = "4TWIN1-G1-Achat"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
-       ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.224854-1.jar"
+        ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.224854-1.jar"
         DOCKER_IMAGE_NAME = "onesbenrhaime/OnesbenRhaime-4TWIN1-G1-Achat"
         DOCKER_HUB_CREDENTIALS = 'docker'
         DOCKER_COMPOSE_VERSION = "1.29.2"
