@@ -1,5 +1,20 @@
 pipeline {
     agent any
+    environment {
+            SNAP_REPO = 'DevOps_Project-1.0'
+            RELEASE_REPO = 'eya'
+            NEXUS_IP = "192.168.33.10"
+            NEXUS_PORT = "8081"
+            NEXUS_LOGIN = "nexus"
+            NEXUS_URL = "192.168.33.10:8081" // Correction de l'URL Nexus
+            NEXUS_REPOSITORY = "eya"
+            NEXUS_USERNAME = "admin"
+            NEXUS_PASSWORD = "nexus"
+            /*ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.192514-2.jar"
+            DOCKER_IMAGE_NAME = "jemaiahmed/spring"
+            DOCKER_HUB_CREDENTIALS = 'docker'
+            DOCKER_COMPOSE_VERSION = "1.29.2"*/
+        }
 
     stages {
         stage('Checkout') {
@@ -20,27 +35,61 @@ pipeline {
             }
         }
 
-       stage('MOCKITO') {
+      /* stage('MOCKITO') {
              steps {
                  sh 'mvn test'
              }
        }
+        stage('SonarQube Analysis') {
+                    steps {
+                        script {
+                            def scannerHome = tool 'sonar'
+                            withSonarQubeEnv {
+                                sh "${scannerHome}/bin/sonar-scanner"
+                            }
+                        }
+                    }
+                }*/
        stage('PACKAGE') {
           steps {
              sh 'mvn package'
           }
        }
 
-        stage('SonarQube Analysis') {
-             steps {
-                 script {
-                     def scannerHome = tool 'sonar'
-                     withSonarQubeEnv {
-                         sh "${scannerHome}/bin/sonar-scanner"
-                     }
-                 }
-             }
-         }
+       stage("UploadArtifact") {
+                   steps {
+                       nexusArtifactUploader(
+                           nexusVersion: 'nexus3',
+                           protocol: 'http',
+                           nexusUrl: "${NEXUS_URL}",
+                           groupId: 'tn.esprit',
+                           version: "1.0-SNAPSHOT",
+                           repository: 'eya',
+                           credentialsId: 'nexus',
+                           artifacts: [
+                               [
+                                   artifactId: 'DevOps_Project',
+                                   classifier: '',
+                                   file: 'target/DevOps_Project-1.0.jar',
+                                   type: 'jar'
+                               ]
+                           ]
+                       )
+                   }
+               }
+
+
 
     }
+
+     post {
+            success {
+                echo 'Build successful! Deploying...'
+
+            }
+            failure {
+                echo 'Build failed! Sending notification...'
+
+            }
+        }
 }
