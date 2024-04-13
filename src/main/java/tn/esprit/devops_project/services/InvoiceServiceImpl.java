@@ -29,6 +29,16 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	public List<Invoice> retrieveAllInvoices() {
 		return invoiceRepository.findAll();
 	}
+
+	@Override
+	public void addInvoice(Invoice invoice) {
+		// Optionally, add validation or manipulation logic here
+		invoice.setDateCreationInvoice(new Date());  // Set the creation date to now
+		invoice.setDateLastModificationInvoice(new Date());  // Set the modification date to now
+		invoice.setArchived(false);  // New invoices are typically not archived
+		invoiceRepository.save(invoice);
+	}
+
 	@Override
 	public void cancelInvoice(Long invoiceId) {
 		// method 01

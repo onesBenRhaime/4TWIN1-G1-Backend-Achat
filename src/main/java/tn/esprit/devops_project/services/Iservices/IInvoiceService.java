@@ -10,6 +10,8 @@ public interface IInvoiceService {
 
 	List<Invoice> getInvoicesBySupplier(Long idSupplier);
 
+	void addInvoice(Invoice invoice);
+
 	void cancelInvoice(Long id);
 
 	Invoice retrieveInvoice(Long id);
