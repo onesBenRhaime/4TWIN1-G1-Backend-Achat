@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    //  environment {
+      environment {
     //     SNAP_REPO = 'DevOps_Project-1.0'
     //     RELEASE_REPO = 'AhmedRepo'
     //     NEXUS_IP = "192.168.33.10"
@@ -12,10 +12,10 @@ pipeline {
     //     NEXUS_USERNAME = "admin"
     //     NEXUS_PASSWORD = "nexus"
     //     ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.192514-2.jar"
-    //      DOCKER_IMAGE_NAME = "benouiranemontasser/spring"
-    //      DOCKER_HUB_CREDENTIALS = '13025486:Montapatron55'
-    //      DOCKER_COMPOSE_VERSION = "1.25.0"
-    //  }
+           DOCKER_IMAGE_NAME = "montasserbenouirane-4twin-g1-achat"
+           DOCKER_HUB_CREDENTIALS = '13025486:Montapatron55'
+           DOCKER_COMPOSE_VERSION = "1.29.2"
+      }
 
     stages {
         stage('Checkout') {
@@ -81,7 +81,7 @@ pipeline {
             }
         }*/
 
-        //  stage('Build Docker Image') {
+        // stage('Build Docker Image') {
         //     steps {
         //         script {
         //             // Build the Docker image using the Dockerfile
@@ -92,32 +92,32 @@ pipeline {
         //                 --build-arg ARTIFACT_PATH=${ARTIFACT_PATH} .")
         //         }
         //     }
-        // }
+        // } 
 
-        // stage('Push Docker Image') {
-        //     steps {
-        //         script {
-        //             docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
-        //                 docker.image("${DOCKER_IMAGE_NAME}").push()
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
+                        docker.image("${DOCKER_IMAGE_NAME}").push()
+                    }
+                }
+            }
+        }
 
-        // stage('Run Docker Compose') {
-        //     steps {
-        //         script {
-        //             // Perform Docker login
-        //             sh 'docker login -u jemaiahmed -p 1919191919'
+        stage('Run Docker Compose') {
+            steps {
+                script {
+                    // Perform Docker login
+                    sh 'docker login -u 13025486 -p Montapatron55'
 
-        //             // Pull the Docker image
-        //             sh 'docker pull jemaiahmed/spring'
+                    // Pull the Docker image
+                    sh 'docker pull montasserbenouirane-4twin-g1-achat'
 
-        //             // Run Docker Compose
-        //             sh 'docker compose up -d'
-        //         }
-        //     }
-        // }
+                    // Run Docker Compose
+                    sh 'docker compose up -d'
+                }
+            }
+        }
 
         // stage('Prometheus Setup') {
         //     steps {
