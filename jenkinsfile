@@ -94,17 +94,7 @@ pipeline {
         //     }
         // } 
 
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
-                        docker.image("${DOCKER_IMAGE_NAME}").push()
-                    }
-                }
-            }
-        }
-
-        stage('Run Docker Compose') {
+             stage('Run Docker Compose') {
             steps {
                 script {
                     // Perform Docker login
@@ -122,6 +112,18 @@ pipeline {
                 }
             }
         }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
+                        docker.image("${DOCKER_IMAGE_NAME}").push()
+                    }
+                }
+            }
+        }
+
+   
 
         // stage('Prometheus Setup') {
         //     steps {
