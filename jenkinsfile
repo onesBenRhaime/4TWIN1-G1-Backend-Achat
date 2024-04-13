@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-      environment {
+    environment {
         SNAP_REPO = 'DevOps_Project-1.0'
         RELEASE_REPO = 'MontassarBenouirane-4twin1-g1'
         NEXUS_IP = "192.168.33.10"
@@ -107,7 +107,7 @@ pipeline {
 
     stage('Run Docker Compose') {
         steps {
-         script {
+          script {
             // Perform Docker login
             sh 'docker login -u 13025486 -p Montapatron55'
 
@@ -116,25 +116,24 @@ pipeline {
 
             // Run Docker Compose
             sh 'docker compose up -d'
+         }
+        }
+    }
+    stage('Prometheus Setup') {
+        steps {
+               sh 'docker compose up -d prometheus'
         }
     }
 
-
-     stage('Prometheus Setup') {
-        steps {
-               sh 'docker compose up -d prometheus'
-            }
-         }
-
-        stage('Grafana Setup') {
+    stage('Grafana Setup') {
             steps {
                 sh 'docker compose up -d grafana'
             }
-         }
+    }
 
     }
    
-    }
+
     post {
         success {
             echo 'Build successful! Deploying...'
