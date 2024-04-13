@@ -11,7 +11,7 @@ pipeline {
         NEXUS_REPOSITORY = "MontaRepo"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexusmonta"
-        // ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.192514-2.jar"
+        ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240413.144941-1.jar"
         DOCKER_IMAGE_NAME = "13025486/montasserbenouirane-4twin-g1-achat"
         DOCKER_HUB_CREDENTIALS = 'docker'
         DOCKER_COMPOSE_VERSION = "1.29.2"
