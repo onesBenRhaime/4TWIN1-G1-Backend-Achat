@@ -12,7 +12,7 @@ pipeline {
     //     NEXUS_USERNAME = "admin"
     //     NEXUS_PASSWORD = "nexus"
     //     ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.192514-2.jar"
-           DOCKER_IMAGE_NAME = "montasserbenouirane-4twin-g1-achat"
+           DOCKER_IMAGE_NAME = "13025486/montasserbenouirane-4twin-g1-achat"
            DOCKER_HUB_CREDENTIALS = 'docker'
            DOCKER_COMPOSE_VERSION = "1.29.2"
       }
@@ -111,7 +111,7 @@ pipeline {
                     sh 'docker login -u 13025486 -p Montapatron55'
 
                     // Pull the Docker image
-                    sh 'docker pull montasserbenouirane-4twin-g1-achat'
+                    sh 'docker pull 13025486/montasserbenouirane-4twin-g1-achat'
 
                     // Run Docker Compose
                     sh 'docker compose up -d'
