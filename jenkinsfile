@@ -2,16 +2,16 @@ pipeline {
     agent any
 
       environment {
-    //     SNAP_REPO = 'DevOps_Project-1.0'
-    //     RELEASE_REPO = 'AhmedRepo'
-    //     NEXUS_IP = "192.168.33.10"
-    //     NEXUS_PORT = "8081"
-    //     NEXUS_LOGIN = "nexus"
-    //     NEXUS_URL = "192.168.33.10:8081" // Correction de l'URL Nexus
-    //     NEXUS_REPOSITORY = "AhmedRepo"
-    //     NEXUS_USERNAME = "admin"
-    //     NEXUS_PASSWORD = "nexus"
-    //     ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.192514-2.jar"
+        SNAP_REPO = 'DevOps_Project-1.0'
+        RELEASE_REPO = 'MontaRepo'
+        NEXUS_IP = "192.168.33.10"
+        NEXUS_PORT = "8081"
+        NEXUS_LOGIN = "nexus"
+        NEXUS_URL = "192.168.33.10:8081" // Correction de l'URL Nexus
+        NEXUS_REPOSITORY = "MontaRepo"
+        NEXUS_USERNAME = "admin"
+        NEXUS_PASSWORD = "nexusmonta"
+        ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.192514-2.jar"
            DOCKER_IMAGE_NAME = "13025486/montasserbenouirane-4twin-g1-achat"
            DOCKER_HUB_CREDENTIALS = 'docker'
            DOCKER_COMPOSE_VERSION = "1.29.2"
@@ -59,7 +59,7 @@ pipeline {
             }
         }
 
-        /*stage("UploadArtifact") {
+        stage("UploadArtifact") {
             steps {
                 nexusArtifactUploader(
                     nexusVersion: 'nexus3',
@@ -67,7 +67,7 @@ pipeline {
                     nexusUrl: "${NEXUS_URL}",
                     groupId: 'tn.esprit',
                     version: "1.0-SNAPSHOT",
-                    repository: 'AhmedRepo',
+                    repository: 'MontaRepo',
                     credentialsId: 'nexus',
                     artifacts: [
                         [
@@ -79,21 +79,31 @@ pipeline {
                     ]
                 )
             }
-        }*/
+        }
 
-        // stage('Build Docker Image') {
-        //     steps {
-        //         script {
-        //             // Build the Docker image using the Dockerfile
-        //             docker.build("${DOCKER_IMAGE_NAME}", "--build-arg NEXUS_URL=${NEXUS_URL} \
-        //                 --build-arg NEXUS_REPOSITORY=${NEXUS_REPOSITORY} \
-        //                 --build-arg NEXUS_USERNAME=${NEXUS_USERNAME} \
-        //                 --build-arg NEXUS_PASSWORD=${NEXUS_PASSWORD} \
-        //                 --build-arg ARTIFACT_PATH=${ARTIFACT_PATH} .")
-        //         }
-        //     }
-        // } 
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image using the Dockerfile
+                    docker.build("${DOCKER_IMAGE_NAME}", "--build-arg NEXUS_URL=${NEXUS_URL} \
+                        --build-arg NEXUS_REPOSITORY=${NEXUS_REPOSITORY} \
+                        --build-arg NEXUS_USERNAME=${NEXUS_USERNAME} \
+                        --build-arg NEXUS_PASSWORD=${NEXUS_PASSWORD} \
+                        --build-arg ARTIFACT_PATH=${ARTIFACT_PATH} .")
+                }
+            }
+        } 
 
+
+    stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
+                        docker.image("${DOCKER_IMAGE_NAME}").push()
+                    }
+                }
+            }
+        }
 
 stage('Run Docker Compose') {
     steps {
@@ -111,15 +121,7 @@ stage('Run Docker Compose') {
 }
 
 
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
-                        docker.image("${DOCKER_IMAGE_NAME}").push()
-                    }
-                }
-            }
-        }
+    
 
    
 
