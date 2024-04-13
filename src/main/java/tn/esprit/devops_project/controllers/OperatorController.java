@@ -9,10 +9,12 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://192.168.33.10:4201/")
+
 public class OperatorController {
 
 	IOperatorService operatorService;
-	
+
 	@GetMapping("/operator")
 	public List<Operator> getOperators() {
 		return operatorService.retrieveAllOperators();
@@ -28,7 +30,7 @@ public class OperatorController {
 		return operatorService.addOperator(operator);
 	}
 
-	@DeleteMapping("/operatot/{operatorId}")
+	@DeleteMapping("/operator/{operatorId}")
 	public void removeOperator(@PathVariable Long operatorId) {
 		operatorService.deleteOperator(operatorId);
 	}
@@ -38,5 +40,4 @@ public class OperatorController {
 		return operatorService.updateOperator(operator);
 	}
 
-	
 }
