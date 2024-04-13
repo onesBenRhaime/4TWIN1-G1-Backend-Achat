@@ -115,7 +115,7 @@ stage('Run Docker Compose') {
             sh 'docker pull 13025486/montasserbenouirane-4twin-g1-achat'
 
             // Run Docker Compose
-            sh 'docker-compose up -d'
+            sh 'docker compose up -d'
         }
     }
 }
