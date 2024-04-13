@@ -11,7 +11,7 @@ pipeline {
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
         ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.224854-1.jar"
-        DOCKER_IMAGE_NAME = "onesbenrhaime/OnesbenRhaime-4TWIN1-G1-Achat"
+        DOCKER_IMAGE_NAME = "onesbenrhaime/onesbenrhaime-4twin-g1-achat"
         DOCKER_HUB_CREDENTIALS = 'docker'
         DOCKER_COMPOSE_VERSION = "1.29.2"
     }
@@ -109,7 +109,7 @@ pipeline {
                     sh 'docker login -u onesbenrhaime -p 223AFT2892'
 
                     // Pull the Docker image
-                    sh 'docker pull onesbenrhaime/OnesbenRhaime-4TWIN1-G1-Achat'
+                    sh 'docker pull onesbenrhaime/onesbenrhaime-4twin-g1-achat'
 
                     // Run Docker Compose
                     sh 'docker compose up -d'

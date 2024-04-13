@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   spring:
-    image: onesbenrhaime/OnesBenRhaime-4TWIN1-G1-Achat
+    image: onesbenrhaime/onesbenrhaime-4twin-g1-achat
     ports:
       - "8050:8050"
     environment:
