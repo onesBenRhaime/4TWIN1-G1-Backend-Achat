@@ -80,8 +80,8 @@ pipeline {
                 )
             }
         }
-/*
-        stage('Build Docker Image') {
+
+        /*stage('Build Docker Image') {
             steps {
                 script {
                     // Build the Docker image using the Dockerfile
@@ -103,7 +103,7 @@ pipeline {
                     }
                 }
             }
-        }
+    }
 
 stage('Run Docker Compose') {
     steps {
@@ -126,8 +126,8 @@ stage('Run Docker Compose') {
             }
          }
 
-         stage('Grafana Setup') {
-             steps {
+        stage('Grafana Setup') {
+            steps {
                 sh 'docker compose up -d grafana'
             }
          }
