@@ -3,7 +3,7 @@ services:
   spring:
     image: eyamechergui/spring
     ports:
-      - "8050:8050"
+      - "8060:8060"
     environment:
       - NEXUS_URL=http://192.168.33.10:8081/
       - NEXUS_REPOSITORY=4TWIN1-G1-Achat
