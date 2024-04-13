@@ -53,11 +53,11 @@ pipeline {
     //     } 
     // }   
 
-        // stage('Package') {
-        //     steps {
-        //         sh 'mvn package'
-        //     }
-        // }
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
 
         /*stage("UploadArtifact") {
             steps {
