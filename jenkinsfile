@@ -43,18 +43,21 @@ pipeline {
          }
 
          stage("MVN SONARQUBE") {
-            steps {
-                 withSonarQubeEnv(installationName: 'sonar') {
-                    sh "mvn -DskipTests sonar:sonar"
+          steps{
+            script { 
+                def scannerHome = tool 'scanner'
+                withSonarQubeEnv {
+                    sh "${scannerHome}/bin/sonar-scanner"
                 }
-             }
-         }
+            } 
+        } 
+    }   
 
-        stage('Package') {
-            steps {
-                sh 'mvn package'
-            }
-        }
+        // stage('Package') {
+        //     steps {
+        //         sh 'mvn package'
+        //     }
+        // }
 
         /*stage("UploadArtifact") {
             steps {

@@ -7,8 +7,8 @@ WORKDIR /app
 # Install curl (if not already installed) to download artifacts
 RUN apk --no-cache add curl
 
-# Download the Spring Boot application JAR file from Nexus
-RUN curl -u admin:nexus "http://192.168.33.10:8081/repository/AhmedRepo/tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.192514-2.jar" --output /app/DevOps_Project-1.0-20240412.192514-2.jar
+# # Download the Spring Boot application JAR file from Nexus
+# RUN curl -u admin:nexus "http://192.168.33.10:8081/repository/AhmedRepo/tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.192514-2.jar" --output /app/DevOps_Project-1.0-20240412.192514-2.jar
 # Expose the port that the Spring Boot application will run on
 EXPOSE 8050
 
