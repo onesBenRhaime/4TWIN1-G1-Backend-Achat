@@ -96,20 +96,16 @@ pipeline {
 
              stage('Run Docker Compose') {
             steps {
-                script {
+                    script {
                     // Perform Docker login
                     sh 'docker login -u 13025486 -p Montapatron55'
-
-                    sh 'sudo usermod -aG docker $USER'
-
-                    sh 'newgrp docker'
 
                     // Pull the Docker image
                     sh 'docker pull 13025486/montasserbenouirane-4twin-g1-achat'
 
                     // Run Docker Compose
-                    sh 'docker compose up -d'
-                }
+                    sh 'docker-compose up -d'
+                     }
             }
         }
 
