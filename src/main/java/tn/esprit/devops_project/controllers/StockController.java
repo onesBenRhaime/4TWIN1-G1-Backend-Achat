@@ -7,7 +7,7 @@ import tn.esprit.devops_project.entities.Stock;
 import tn.esprit.devops_project.services.Iservices.IStockService;
 import java.util.List;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://192.168.33.10:4201/")
 @RestController
 @AllArgsConstructor
 public class StockController {

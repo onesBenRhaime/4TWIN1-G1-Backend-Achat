@@ -10,10 +10,10 @@ pipeline {
         NEXUS_REPOSITORY = "4TWIN1-G1-Achat"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
-        ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.224854-1.jar"
+      /*  ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.224854-1.jar"
         DOCKER_IMAGE_NAME = "onesbenrhaime/onesbenrhaime-4twin-g1-achat"
         DOCKER_HUB_CREDENTIALS = 'docker'
-        DOCKER_COMPOSE_VERSION = "1.29.2"
+        DOCKER_COMPOSE_VERSION = "1.29.2" */
     }
     stages {
         stage('Checkout') {
@@ -55,7 +55,7 @@ pipeline {
 
                 }
              }
-       }
+       }*/
        stage("UploadArtifact") {
             steps {
                 nexusArtifactUploader(
@@ -77,8 +77,8 @@ pipeline {
                     )
             }
        }
-  */
-        stage('Build Docker Image') {
+
+      /*  stage('Build Docker Image') {
             steps {
                 script {
                     // Build the Docker image using the Dockerfile
@@ -127,16 +127,16 @@ pipeline {
                 sh 'docker compose up -d grafana'
             }
         }
-
+      */
     } 
-    post {
-        success {
-            echo 'Build successful! Deploying...'
+       post {
+           success {
+               echo 'Build successful! Deploying...'
 
-        }
-        failure {
-            echo 'Build failed! Sending notification...'
+           }
+           failure {
+               echo 'Build failed! Sending notification...'
 
-        }
-    }
+           }
+       }
 }
