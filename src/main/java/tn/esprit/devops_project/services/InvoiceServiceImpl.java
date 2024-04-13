@@ -32,10 +32,13 @@ public class InvoiceServiceImpl implements IInvoiceService {
 
 	@Override
 	public void addInvoice(Invoice invoice) {
-		// Optionally, add validation or manipulation logic here
-		invoice.setDateCreationInvoice(new Date());  // Set the creation date to now
-		invoice.setDateLastModificationInvoice(new Date());  // Set the modification date to now
-		invoice.setArchived(false);  // New invoices are typically not archived
+		// Set the creation and modification dates to now
+		invoice.setDateCreationInvoice(new Date());
+		invoice.setDateLastModificationInvoice(new Date());
+		// Set archived to false for new invoices
+		invoice.setArchived(false);
+
+		// Save the invoice
 		invoiceRepository.save(invoice);
 	}
 

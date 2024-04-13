@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "*")
 public class InvoiceController {
 
     IInvoiceService invoiceService;
@@ -46,10 +47,10 @@ public class InvoiceController {
         return invoiceService.getTotalAmountInvoiceBetweenDates(startDate, endDate);
     }
 
-    @PostMapping  // Maps to POST request to create a new invoice
+    @PostMapping("/invoices")
     public ResponseEntity<Invoice> addInvoice(@RequestBody Invoice invoice) {
         invoiceService.addInvoice(invoice);
-        return ResponseEntity.ok(invoice);  // Return the created invoice
+        return ResponseEntity.ok(invoice);
     }
 
 
