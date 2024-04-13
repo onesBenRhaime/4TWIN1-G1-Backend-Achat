@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://192.168.33.10:4201/")
 public class SupplierController {
 
 	ISupplierService supplierService;

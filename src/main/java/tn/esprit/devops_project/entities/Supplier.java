@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -27,10 +28,13 @@ public class Supplier implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long idSupplier;
+	@NotNull
 	String code;
+	@NotNull
 	String label;
-	@Enumerated(EnumType.STRING)
-	SupplierCategory supplierCategory;
+
+
+
 	@OneToMany(mappedBy="supplier")
 	@JsonIgnore
 	Set<Invoice> invoices;
