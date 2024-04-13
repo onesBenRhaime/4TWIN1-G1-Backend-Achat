@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   spring:
-    image: montasserbenouirane-4twin-g1-achat
+    image: 13025486/montasserbenouirane-4twin-g1-achat
     ports:
       - "8050:8050"
     environment:
