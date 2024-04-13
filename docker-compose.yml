@@ -6,7 +6,7 @@ services:
       - "8050:8050"
     environment:
       - NEXUS_URL=http://192.168.33.10:8081/
-      - NEXUS_REPOSITORY=MontaRepo
+      - NEXUS_REPOSITORY=MontassarBenouirane-4twin1-g1
       - NEXUS_USERNAME=admin
       - NEXUS_PASSWORD=nexusmonta
       - ARTIFACT_PATH=tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240413.173408-6.jar

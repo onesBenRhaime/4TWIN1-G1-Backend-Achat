@@ -3,12 +3,12 @@ pipeline {
 
       environment {
         SNAP_REPO = 'DevOps_Project-1.0'
-        RELEASE_REPO = 'MontaRepo'
+        RELEASE_REPO = 'MontassarBenouirane-4twin1-g1'
         NEXUS_IP = "192.168.33.10"
         NEXUS_PORT = "8081"
         NEXUS_LOGIN = "nexus"
         NEXUS_URL = "192.168.33.10:8081" // Correction de l'URL Nexus
-        NEXUS_REPOSITORY = "MontaRepo"
+        NEXUS_REPOSITORY = "MontassarBenouirane-4twin1-g1"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexusmonta"
         ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240413.173408-6.jar"
@@ -59,7 +59,7 @@ pipeline {
             }
         }
 
-       /* stage("UploadArtifact") {
+        stage("UploadArtifact") {
             steps {
                 nexusArtifactUploader(
                     nexusVersion: 'nexus3',
@@ -67,7 +67,7 @@ pipeline {
                     nexusUrl: "${NEXUS_URL}",
                     groupId: 'tn.esprit',
                     version: "1.0-SNAPSHOT",
-                    repository: 'MontaRepo',
+                    repository: 'MontassarBenouirane-4twin1-g1',
                     credentialsId: 'nexus',
                     artifacts: [
                         [
@@ -80,7 +80,7 @@ pipeline {
                 )
             }
         }
-*/
+
         stage('Build Docker Image') {
             steps {
                 script {
