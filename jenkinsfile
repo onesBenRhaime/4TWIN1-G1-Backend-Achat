@@ -30,11 +30,11 @@ pipeline {
                   }
         }
 
-     /*  stage('Tests - JUnit/Mockito') {
+       stage('Tests - JUnit/Mockito') {
              steps {
                  sh 'mvn test'
              }
-       }*/
+       }
        stage('Build package') {
             steps {
                 sh 'mvn package'
@@ -45,7 +45,7 @@ pipeline {
                 sh 'mvn install'
             }
        }
-    /* stage('SonarQube Analysis') {
+     stage('SonarQube Analysis') {
              steps {
                 script {
                   def scannerHome = tool 'scanner'
@@ -56,9 +56,9 @@ pipeline {
                 }
              }
        }
-    */
 
-      /*  stage("UploadArtifact") {
+
+       stage("UploadArtifact") {
             steps {
                 nexusArtifactUploader(
                     nexusVersion: 'nexus3',
@@ -78,7 +78,7 @@ pipeline {
                         ]
                     )
             }
-       }*/
+       }
         stage('Build Docker Image') {
             steps {
                 script {
