@@ -102,20 +102,21 @@ pipeline {
             }
         }
 
-        stage('Run Docker Compose') {
-            steps {
-                script {
-                    // Perform Docker login
-                    sh 'docker login -u onesbenrhaime -p 223AFT2892'
 
-                    // Pull the Docker image
-                    sh 'docker pull onesbenrhaime/onesbenrhaime-4twin-g1-achat'
+stage('Run Docker Compose') {
+    steps {
+        script {
+            // Perform Docker login if needed
+            sh 'docker login -u onesbenrhaime -p 223AFT2892'
 
-                    // Run Docker Compose
-                    sh 'docker compose up -d'
-                }
-            }
+            // Pull the Docker images if needed
+            sh 'docker-compose pull'
+
+            // Run Docker Compose
+            sh 'docker-compose up -d'
         }
+    }
+}
 
         stage('Prometheus Setup') {
             steps {
