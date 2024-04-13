@@ -101,9 +101,6 @@ stage('Run Docker Compose') {
             // Perform Docker login
             sh 'docker login -u 13025486 -p Montapatron55'
 
-            // Change permissions of Docker socket
-            sh 'sudo chmod 666 /var/run/docker.sock'
-
             // Pull the Docker image
             sh 'docker pull 13025486/montasserbenouirane-4twin-g1-achat'
 
