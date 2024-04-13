@@ -5,11 +5,11 @@ services:
     ports:
       - "8050:8050"
     environment:
-      # - NEXUS_URL=http://192.168.33.10:8081/
-      # - NEXUS_REPOSITORY=AhmedRepo
-      # - NEXUS_USERNAME=admin
-      # - NEXUS_PASSWORD=nexus
-      # - ARTIFACT_PATH=tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.192514-2.jar
+      - NEXUS_URL=http://192.168.33.10:8081/
+      - NEXUS_REPOSITORY=MontaRepo
+      - NEXUS_USERNAME=admin
+      - NEXUS_PASSWORD=nexus
+      - ARTIFACT_PATH=tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.192514-2.jar
       - SPRING_DATASOURCE_URL=jdbc:mysql://dbmysql:3306/brogramDB?createDatabaseIfNotExist=true&userSSL=false
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
