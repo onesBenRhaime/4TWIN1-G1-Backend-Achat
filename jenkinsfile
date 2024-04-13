@@ -10,7 +10,7 @@ pipeline {
         NEXUS_URL = "192.168.33.10:8081" // Correction de l'URL Nexus
         NEXUS_REPOSITORY = "MontassarBenouirane-4twin1-g1"
         NEXUS_USERNAME = "admin"
-        NEXUS_PASSWORD = "nexusmonta"
+        NEXUS_PASSWORD = "nexus"
         ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240413.183241-2.jar"
         DOCKER_IMAGE_NAME = "13025486/montasserbenouirane-4twin-g1-achat"
         DOCKER_HUB_CREDENTIALS = 'docker'
