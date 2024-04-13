@@ -30,34 +30,32 @@ pipeline {
                   }
         }
 
-       stage('Tests - JUnit/Mockito') {
+        stage('Tests - JUnit/Mockito') {
              steps {
                  sh 'mvn test'
              }
-       }
+        }
        stage('Build package') {
             steps {
                 sh 'mvn package'
             }
-       }
+        }
        stage('Maven Install') {
             steps {
                 sh 'mvn install'
             }
-       }
-     stage('SonarQube Analysis') {
-             steps {
+        }
+        stage('SonarQube Analysis') {
+            steps {
                 script {
                   def scannerHome = tool 'scanner'
                      withSonarQubeEnv {
                          sh "${scannerHome}/bin/sonar-scanner"
-                     }
+                    }
 
                 }
              }
        }
-
-
        stage("UploadArtifact") {
             steps {
                 nexusArtifactUploader(
@@ -102,22 +100,21 @@ pipeline {
             }
         }
 
+        stage('Run Docker Compose') {    
+            steps {
+                script {
+                    // Perform Docker login if needed
+                    sh 'docker login -u onesbenrhaime -p 223AFT2892'
 
-stage('Run Docker Compose') {
-    steps {
-        script {
-            // Perform Docker login if needed
-            sh 'docker login -u onesbenrhaime -p 223AFT2892'
+                     // Pull the Docker images if needed
+                     sh 'docker compose pull'
 
-            // Pull the Docker images if needed
-            sh 'docker compose pull'
-
-            // Run Docker Compose
-            sh 'docker compose up -d'
+                      // Run Docker Compose
+                   sh 'docker compose up -d'
+                }
+            }
         }
-    }
-}
-
+        
         stage('Prometheus Setup') {
             steps {
                 sh 'docker compose up -d prometheus'
