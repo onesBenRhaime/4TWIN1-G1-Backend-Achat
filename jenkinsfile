@@ -13,7 +13,7 @@ pipeline {
     //     NEXUS_PASSWORD = "nexus"
     //     ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.192514-2.jar"
            DOCKER_IMAGE_NAME = "montasserbenouirane-4twin-g1-achat"
-           DOCKER_HUB_CREDENTIALS = '13025486:Montapatron55'
+           DOCKER_HUB_CREDENTIALS = 'docker'
            DOCKER_COMPOSE_VERSION = "1.29.2"
       }
 
