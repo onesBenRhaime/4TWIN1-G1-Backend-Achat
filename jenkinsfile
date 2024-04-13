@@ -10,10 +10,10 @@ pipeline {
             NEXUS_REPOSITORY = "4TWIN1-G1-Achat"
             NEXUS_USERNAME = "admin"
             NEXUS_PASSWORD = "nexus"
-            /*ARTIFACT_PATH = "tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240412.230309-1.jar"
+            ARTIFACT_PATH ="tn/esprit/DevOps_Project/1.0-SNAPSHOT/DevOps_Project-1.0-20240413.214603-2.jar"
             DOCKER_IMAGE_NAME = "eyamechergui/spring"
             DOCKER_HUB_CREDENTIALS = 'docker'
-            DOCKER_COMPOSE_VERSION = "1.29.2"*/
+            DOCKER_COMPOSE_VERSION = "1.29.2"
         }
 
     stages {
@@ -56,7 +56,7 @@ pipeline {
           }
        }
 
-       stage("UploadArtifact") {
+       /*stage("UploadArtifact") {
                    steps {
                        nexusArtifactUploader(
                            nexusVersion: 'nexus3',
@@ -77,8 +77,8 @@ pipeline {
                        )
                    }
                }
-
-               /* stage('Build Docker Image') {
+      */
+                stage('Build Docker Image') {
                            steps {
                                script {
                                    // Build the Docker image using the Dockerfile
@@ -127,7 +127,7 @@ pipeline {
                                sh 'docker compose up -d grafana'
                            }
                        }
-*/
+
 
 
 
