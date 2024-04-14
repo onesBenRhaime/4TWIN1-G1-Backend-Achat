@@ -129,16 +129,16 @@ pipeline {
         }
 
         Ajout du stage pour l'envoi de notifications par e-mail
-        stage('Mail Notification') {
-            steps {
-                script {
-                    // Envoyer un e-mail à la fin du pipeline
-                    mail to: 'ones.benRhaime@esprit.tn',
-                         subject: 'Jenkins Job',
-                         body: '''' Builed successfuly!'''
-                }
-            }
-        }
+       stage('Mail Notification') {
+           steps {
+               script {
+                   // Envoyer un e-mail à la fin du pipeline
+                   mail to: 'onesrhaime28@gmail.com',
+                        subject: 'Jenkins Job',
+                        body: '''Build successfuly!'''
+               }
+           }
+       }
 
     } 
        post {
