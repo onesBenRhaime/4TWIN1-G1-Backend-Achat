@@ -52,7 +52,7 @@ pipeline {
              steps {
                  sh 'mvn test'
              }
-         }
+         }*/
 
          stage("MVN SONARQUBE") {
             steps {
@@ -60,7 +60,7 @@ pipeline {
                     sh "mvn -DskipTests sonar:sonar"
                 }
              }
-         }*/
+         }
 
         stage('Package') {
             steps {
@@ -127,7 +127,7 @@ pipeline {
                 }
             }
         }
-
+/*
         stage('Prometheus Setup') {
             steps {
                 sh 'docker compose up -d prometheus'
@@ -140,7 +140,7 @@ pipeline {
             }
         }
 
-    }
+    }*/
 
     post {
         success {
