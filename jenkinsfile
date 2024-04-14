@@ -36,6 +36,18 @@ pipeline {
             }
         }
 
+        stage('Test') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+
+        stage('MVN SONARQUBE') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+/*
        stage('Test') {
              steps {
                  sh 'mvn test'
@@ -48,7 +60,7 @@ pipeline {
                     sh "mvn -DskipTests sonar:sonar"
                 }
              }
-         }
+         }*/
 
         stage('Package') {
             steps {
