@@ -47,8 +47,8 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
-/*
-       stage('Test') {
+
+       /*stage('Test') {
              steps {
                  sh 'mvn test'
              }
@@ -127,20 +127,20 @@ pipeline {
                 }
             }
         }
-/*
-        stage('Prometheus Setup') {
+
+        /*stage('Prometheus Setup') {
             steps {
                 sh 'docker compose up -d prometheus'
             }
-        }
+        }*/
 
-        stage('Grafana Setup') {
+        /*stage('Grafana Setup') {
             steps {
                 sh 'docker compose up -d grafana'
             }
-        }
+        }*/
 
-    }*/
+    }
 
     post {
         success {
