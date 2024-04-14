@@ -40,29 +40,24 @@ pipeline {
 
 
 
-       stage('Test mosquitto') {
+       stage('Test') {
              steps {
                  sh 'mvn test'
              }
          }
-         stage('MVN SONARQUBE') {
-                      steps {
-                          sh 'mvn test'
-                      }
-                  }
          stage('Generate JaCoCo Report') {
                                  steps {
                                      sh 'mvn jacoco:report'
                                  }
                              }
 
-         /*stage("MVN SONARQUBE") {
+         stage("MVN SONARQUBE") {
             steps {
                  withSonarQubeEnv(installationName: 'sonar') {
                     sh "mvn -DskipTests sonar:sonar"
                 }
              }
-         }  */
+         }
 
         stage('Package') {
             steps {
@@ -70,7 +65,7 @@ pipeline {
             }
         }
 
-        stage("UploadArtifact") {
+       /* stage("UploadArtifact") {
             steps {
                 nexusArtifactUploader(
                     nexusVersion: 'nexus3',
@@ -90,9 +85,9 @@ pipeline {
                     ]
                 )
             }
-        }
+        }*/
 
-          stage('Build Docker Image') {
+         /* stage('Build Docker Image') {
             steps {
                 script {
                     // Build the Docker image using the Dockerfile
@@ -140,7 +135,7 @@ pipeline {
             steps {
                 sh 'docker compose up -d grafana'
             }
-        }
+        }*/
 
     }
 
