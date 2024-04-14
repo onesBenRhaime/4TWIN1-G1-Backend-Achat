@@ -51,13 +51,13 @@ pipeline {
                                  }
                              }
 
-         stage("MVN SONARQUBE") {
+         /*stage("MVN SONARQUBE") {
             steps {
                  withSonarQubeEnv(installationName: 'sonar') {
                     sh "mvn -DskipTests sonar:sonar"
                 }
              }
-         }
+         }*/
 
         stage('Package') {
             steps {
