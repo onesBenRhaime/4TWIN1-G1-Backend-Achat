@@ -20,7 +20,7 @@ pipeline {
 
 
     stages {
-        stage('Checkout') {
+        stage('Git') {
             steps {
                 checkout scm
             }
@@ -32,17 +32,13 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Maven Build') {
             steps {
                 sh 'mvn clean compile'
             }
         }
 
-      /* stage('MOCKITO') {
-             steps {
-                 sh 'mvn test'
-             }
-         }
+      /*
 
          stage('SonarQube Analysis') {
              steps {
@@ -53,8 +49,13 @@ pipeline {
                      }
                  }
              }
-         }
-*/
+         }*/
+         stage('MOCKITO') {
+                      steps {
+                          sh 'mvn test'
+                      }
+                  }
+
 
 
 
