@@ -36,23 +36,20 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                sh 'mvn clean compile'
-            }
-        }
 
-        stage('MVN SONARQUBE') {
-            steps {
-                sh 'mvn clean compile'
-            }
-        }
-/*
+
+
+
        stage('Test') {
              steps {
                  sh 'mvn test'
              }
          }
+         stage('Generate JaCoCo Report') {
+                                 steps {
+                                     sh 'mvn jacoco:report'
+                                 }
+                             }
 
          stage("MVN SONARQUBE") {
             steps {
@@ -60,7 +57,7 @@ pipeline {
                     sh "mvn -DskipTests sonar:sonar"
                 }
              }
-         }*/
+         }
 
         stage('Package') {
             steps {
@@ -90,7 +87,7 @@ pipeline {
             }
         }*/
 
-         stage('Build Docker Image') {
+         /* stage('Build Docker Image') {
             steps {
                 script {
                     // Build the Docker image using the Dockerfile
@@ -138,7 +135,7 @@ pipeline {
             steps {
                 sh 'docker compose up -d grafana'
             }
-        }
+        }*/
 
     }
 
