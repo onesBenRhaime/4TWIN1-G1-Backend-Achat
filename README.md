@@ -4,17 +4,17 @@
 
 ## Overview
 
-Welcome to the DevOps Project Achat-Stock ! This project aims to streamline the deployment process using various DevOps tools and practices. Below are the key steps I followed to ensure successful deployment.
+Welcome to the DevOps Project Achat-Stock    ! This project aims to streamline the deployment process using various DevOps tools and practices. Below are the key steps I followed to ensure successful deployment.
 
 ![Example Image](images/solutionFinale.png)
 
 ![Example Image](images/jenkins.png)
-
 ![Example Image](images/image.png)
-
 ## Key Steps
 
 1. **Environment Setup with Jenkins**: Prepared the Jenkins environment and successfully retrieved Spring Boot projects while determining the necessary Maven and JDK versions.
+
+
 
 2. **Configuration and Preparation**: Ensured a clean project build, crucial for deployment reliability.
 
