@@ -131,7 +131,7 @@ pipeline {
                        }
 
       // Ajout du stage pour l'envoi de notifications par e-mail
-      stage('MAILING') {
+      stage('MAILING fin p') {
           steps{
               mail bcc: '', body: '''
                   The pipeline has completed successfully. No action required ''', cc: '', from: '', replyTo: '', subject: 'Succès de la pipeline DevOps Project Achat  mechergui eya ', to: 'eya.mechergui@esprit.tn'
