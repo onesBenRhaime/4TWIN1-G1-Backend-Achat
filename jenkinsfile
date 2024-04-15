@@ -128,7 +128,7 @@ pipeline {
             }
         }
 
-     
+
       stage('Email Notification') {
           steps{
               mail bcc: '', body: ''' Stage: GIT Pull
