@@ -133,7 +133,6 @@ pipeline {
           steps{
               mail bcc: '', body: ''' Stage: GIT Pull
               - Pulling from Git...
-
               Stage: Maven Clean Compile
               - Building Spring project...
 
@@ -158,21 +157,21 @@ pipeline {
               Stage: Monitoring Services G/P
               - Starting Prometheus and Grafana...
 
-              Final Report: The pipeline has completed successfully. No action required ''', cc: '', from: '', replyTo: '', subject: 'Succès de la pipeline DevOps Project Achat BEN RHAIME', to: 'ones.benrhaime@esprit.tn'
+              Final Report: The pipeline has completed successfully. No action required ''', cc: '', from: '', replyTo: '', subject: 'Succès de la pipeline DevOps Project  ONESBENRHAIME-4TWIN1-G1', to: 'ones.benrhaime@esprit.tn, wafa.hidri@esprit.tn' 
           }
       }
 
 
 
     } 
-       post {
-           success {
-               echo 'Build successful! Deploying...'
+    post {
+        success {
+            echo 'Build successful! Deploying...'
 
-           }
-           failure {
-               echo 'Build failed! Sending notification...'
+        }
+        failure {
+            echo 'Build failed! Sending notification...'
 
-           }
-       }
+        }
+    }
 }
