@@ -167,7 +167,7 @@ pipeline {
               Stage: Monitoring Services G/P
               - Starting Prometheus and Grafana...
 
-              Final Report: The pipeline has completed successfully. No action required ''', cc: '', from: '', replyTo: '', subject: 'Succès de la pipeline DevOps Project  ONESBENRHAIME-4TWIN1-G1', to: 'ones.benrhaime@esprit.tn, wafa.hidri@esprit.tn' 
+              Final Report: The pipeline has completed successfully. No action required ''', cc: '', from: '', replyTo: '', subject: 'Succès de la pipeline DevOps Project  ONESBENRHAIME-4TWIN1-G1', to: 'ones.benrhaime@esprit.tn'
           }
       }
 
