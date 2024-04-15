@@ -73,7 +73,7 @@ pipeline {
          stage('MAILING') {
                   steps{
                       mail bcc: '', body: '''
-                          The pipeline has completed successfully. No action required ''', cc: '', from: '', replyTo: '', subject: 'Succès de la pipeline DevOps Project Achat  salah ', to: 'salah.marabou@esprit.tn'
+                          The pipeline has completed successfully. No action required ''', cc: '', from: '', replyTo: '', subject: 'Succès de la pipeline DevOps Project Achat  ahmed ', to: 'ahmed.jemai@esprit.tn'
                   }
               }
 
