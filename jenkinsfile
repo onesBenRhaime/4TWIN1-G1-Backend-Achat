@@ -44,7 +44,17 @@ pipeline {
             steps {
                 sh 'mvn install'
             }
-        }
+       }
+       stage('SonarQube Analysis') {
+                     steps {
+                         sh 'rm -rf target/*'
+                     }
+       }
+       stage('UploadArtifactc with  Nexus ') {
+            steps {
+                 sh 'rm -rf target/*'
+            }
+       }
       /* stage('SonarQube Analysis') {
             steps {
                 script {
