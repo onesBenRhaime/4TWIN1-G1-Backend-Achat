@@ -45,7 +45,7 @@ pipeline {
                 sh 'mvn install'
             }
         }
-       stage('SonarQube Analysis') {
+      /* stage('SonarQube Analysis') {
             steps {
                 script {
                   def scannerHome = tool 'scanner'
@@ -56,7 +56,7 @@ pipeline {
                 }
              }
        }
-       /*   stage("UploadArtifactc with  Nexus ") {
+          stage("UploadArtifactc with  Nexus ") {
             steps {
                 nexusArtifactUploader(
                     nexusVersion: 'nexus3',
@@ -128,7 +128,7 @@ pipeline {
             }
         }
 
-      // Ajout du stage pour l'envoi de notifications par e-mail
+     
       stage('Email Notification') {
           steps{
               mail bcc: '', body: ''' Stage: GIT Pull
@@ -139,9 +139,6 @@ pipeline {
 
               Stage: Test - JUNIT/MOCKITO
               - Testing Spring project...
-
-              Stage: JaCoCo Report
-              - Generating JaCoCo Coverage Report...
 
               Stage: SonarQube Analysis
               - Running Sonarqube analysis...
